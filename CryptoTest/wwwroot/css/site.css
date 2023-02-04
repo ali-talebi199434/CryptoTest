@@ -1,0 +1,45 @@
+﻿body{
+    padding-top:90px
+}
+nav a.nav-link.active {
+    color: #00c46b !important;
+    border-bottom: 2px solid #00c46b;
+}
+
+nav .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* remove the gap so it doesn't close */
+}
+
+nav .dropdown-menu-dark {
+    background-color: rgb(33,37,41)
+}
+
+header .navbar-brand{
+    font-size:1.7rem !important;
+    font-weight:bold
+}
+
+#cryptoWalletDropDown small{
+    font-size:0.7rem !important
+}
+
+#btnSignup {
+    background-color: #00c46b !important;
+    border-color: transparent !important;
+    color: white !important;
+}
+
+#btnSignup:hover {
+    background-color: rgba(0,196,107,0.5) !important;
+}
+
+#btnLogin {
+    background-color: transparent !important;
+    border-color: #00c46b !important;
+    color: #00c46b !important;
+}
+
+#btnLogin:hover {
+    background-color: rgba(0,0,0,0.5) !important;
+}

@@ -1,0 +1,114 @@
+﻿@model HomeViewModel
+@section css{
+  <link rel="stylesheet" href="~/css/home.css" />
+}
+
+  <div class="mainBanner">
+    <h1 class="text-white text-center">
+      Markets overview
+    </h1>
+  </div>
+  <div class="container">
+    <ul id="navPills" class="nav nav-pills mt-3 rounded">
+      <li class="nav-item">
+        <a class="nav-link" href="#">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">CryptoCurrency</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Indices</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Commodities</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Shares</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Currencies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Bonds</a>
+      </li>
+    </ul>
+
+    <div class="row justify-content-end mt-4">
+      <div class="col-md-3 d-flex justify-content-end">
+        <span style="font-size:1.2rem" class="me-2">Sort by:</span>
+        <div class="nav-item dropdown">
+          <button class="btn btn-secondary dropdown-toggle rounded-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Most Traded
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Most Traded</a></li>
+            <li><a class="dropdown-item" href="#">Top rises</a></li>
+            <li><a class="dropdown-item" href="#">Top fallers</a></li>
+            <li><a class="dropdown-item" href="#">Most votile</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="tHead" class="table-responsive mt-3">
+      <table class="table table-hover table-striped">
+        <thead class="bg-dark text-light">
+          <tr>
+            <th style="border-radius:8px 0 0 8px !important; width:18%">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control">
+              </div>
+            </th>
+            <th>Spread</th>
+            <th style="width:15%">Sell</th>
+            <th></th>
+            <th style="width:15%">Buy</th>
+            <th></th>
+            <th>Chg%</th>
+            <th class="text-end" style="border-radius: 0 8px 8px 0  !important">Charts (2 days)</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+        @foreach (var item in Model?.Markets)
+        {
+          <tr data-base="@item.Base" data-quote="@item.Quote">
+            <td>
+              @($"{item.Base}/{item.Quote}")
+              <br/>
+              <small>@item.Description</small>
+            </td>
+            <td></td>
+            <td class="sell">
+                <span></span>
+              <i class="fa fa-angle-up"></i>
+              <i class="fa fa-angle-down"></i>
+            </td>
+            <td>
+                <button class="btn btn-sm btn-success">Sell</button>
+            </td>
+            <td class="buy">
+              <span></span>
+              <i class="fa fa-angle-up"></i>
+              <i class="fa fa-angle-down"></i>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-success">Buy</button>
+            </td>
+            <td>
+              
+            </td>
+            <td></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+@section js{
+  <script src="~/lib/socket.io/socket.io.js"></script>
+  <script src="~/js/index.js"></script>
+  }

@@ -1,0 +1,28 @@
+[
+	{
+		"id": "BTCUSDT",
+		"base": "BTC",
+		"quote": "USDT",
+		"title": "BTCUSDT"
+	},
+	{
+		"id": "ETHUSDT",
+		"base": "ETH",
+		"quote": "USDT"
+	},
+	{
+		"id": "LTCUSDT",
+		"base": "LTC",
+		"quote": "USDT"
+	},
+	{
+		"id": "BTCEUR",
+		"base": "BTC",
+		"quote": "EUR"
+	},
+	{
+		"id": "DODGEUSD",
+		"base": "DODGE",
+		"quote": "USD"
+	}
+]

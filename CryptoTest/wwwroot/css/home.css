@@ -1,0 +1,84 @@
+﻿.mainBanner {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: radial-gradient(55.18% 234.06% at 50% 254.09%,#00c46b 0,#1b1b1b 100%),#1b1b1b;
+}
+
+#navPills {
+    background-color: #f2f3f5;
+}
+
+#navPills a.nav-link {
+    color: #00c46b;
+    font-weight: bold;
+}
+
+#navPills a.nav-link.active {
+    background-color: #00c46b;
+    color: white;
+}
+
+#tHead th,
+#tHead td {
+    vertical-align: middle
+}
+
+#tbody td{
+    font-weight:bold
+}
+#tbody td small{
+    font-weight:lighter
+}
+
+#tbody .btn-success {
+    background-color: #00c46b !important;
+    color: white !important;
+}
+
+td.sell,
+td.buy{
+    position:relative
+}
+
+td.sell i,
+td.buy i {
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 45%;
+}
+
+td.raised i.fa-angle-up,
+td.dropped i.fa-angle-down {
+    display: block;
+}
+
+.raised {
+    animation-name: raised;
+    animation-duration: 0.3s;
+}
+
+.dropped {
+    animation-name: dropped;
+    animation-duration: 0.3s;
+}
+
+@keyframes raised {
+    0% {
+        background-color: #ffffff;
+    }
+
+    100% {
+        background-color: rgba(100,255,100,0.5);
+    }
+}
+
+@keyframes dropped {
+    0% {
+        background-color: #ffffff;
+    }
+
+    100% {
+        background-color: rgba(255,100,100,0.5);
+    }
+}

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+
+@{
+  bool isLoggedIn = User?.Identity?.IsAuthenticated ?? false;
+}
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.Title</title>
+  <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+  <link href="~/css/site.css" rel="stylesheet" />
+  @RenderSection("css", false)
+</head>
+<body>
+  <header class="fixed-top bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link active"
+                 aria-current="page" aria-expanded="false" href="#">
+                Markets
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">MARKETS OVERVIEW</a></li>
+                <li><a class="dropdown-item" href="#">CRYPTOCURRENCIES</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" aria-expanded="false">
+                NEWS&FEATURES
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">MARKET NEWS</a></li>
+                <li><a class="dropdown-item" href="#">CRYPTO NEWS</a></li>
+                <li><a class="dropdown-item" href="#">ANALYSIS</a></li>
+                <li><a class="dropdown-item" href="#">FEATURES</a></li>
+                <li><a class="dropdown-item" href="#">MARKETS HISTORICAL DATA</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" aria-expanded="false">
+                LEARN TO TRADE
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">THE BASICS</a></li>
+                <li><a class="dropdown-item" href="#">TRADING GUIDE</a></li>
+                <li><a class="dropdown-item" href="#">TRADING DICTIONARY</a></li>
+                <li><a class="dropdown-item" href="#">BITCOIN</a></li>
+                <li><a class="dropdown-item" href="#">ETHEREUM</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" aria-expanded="false">
+                ABOUT US
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">CONDITIONS</a></li>
+                <li><a class="dropdown-item" href="#">OUR PARTNERS</a></li>
+                <li><a class="dropdown-item" href="#">SECURITY POLICY</a></li>
+                <li><a class="dropdown-item" href="#">SYSTEM HEALTH</a></li>
+                <li><a class="dropdown-item" href="#">ANTI-MONEY LANDERING</a></li>
+                <li><a class="dropdown-item" href="#">VICTOR PROKOPENYA</a></li>
+                <li><a class="dropdown-item" href="#">MEDIA CENTER</a></li>
+                <li><a class="dropdown-item" href="#">SECURITY</a></li>
+              </ul>
+            </li>
+            <li class="nav-item d-flex align-items-center ms-2">
+              <form class="" role="search">
+                <div class="input-group input-group-sm">
+                  <button type="button" class="btn btn-dark btn-outline-light" data-bs-toggle="collapse" href="#navSearch"><i class="fa fa-search"></i></button>
+                  <input id="navSearch" type="text" class="form-control bg-dark text-light collapse collapse-horizontal" aria-label="navbar search" aria-describedby="navbar search">
+                </div>
+              </form>
+            </li>
+          </ul>
+          <div>
+            @if (!isLoggedIn)
+            {
+              <button id="btnLogin" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdlLogin">LOGIN</button>
+              <button id="btnSignup" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdlSignup">SIGN UP</button>
+            }
+            else
+            {
+              <partial name="_UserProfile" />
+            }
+
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container text-light">
+      <div class="row">
+        <div class="col-md-2 d-none d-md-block">
+          <a class="navbar-brand">Currency.com</a>
+        </div>
+        <div id="cryptoWalletDropDown" class="col-md-4 d-none d-md-block dropdown">
+          <button class="btn btn-secondary dropdown-toggle w-100 rounded-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Crypto Wallet
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <a class="dropdown-item" href="#">
+                Crypto Wallet
+                <br />
+                <small>Gibraltar (Regulated by the GFSC)</small>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                Currency Com Global LLC
+                <br />
+                <small>Saint Vincent and the Grenadines</small>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                Crypto Wallet US
+                <br />
+                <small>United States (Registered with FinCEN)</small>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                Pro Trading
+                <br />
+                <small>Gibraltar (Regulated by the GFSC)</small>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-5">
+        </div>
+        <div class="col-md-1 d-none d-md-block">
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <div>
+
+    @RenderBody()
+    @if (!isLoggedIn)
+    {
+      <partial name="_LoginForm" model="@new LoginViewModel()"/>
+      <partial name="_SignupForm" model="@new SignupViewModel()" />
+    }
+  </div>
+  @RenderSection("js",false)
+  <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/utils.js"></script>
+  <script src="~/js/layout.js"></script>
+</body>
+</html>
